@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Calendar</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: minmax(40px, 1fr);
+  gap: 10px;
+  max-width: 600px;
+  margin: auto;
+}
+
+.day, .date {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.day {
+  background: lightgray;
+  font-size: 1rem;
+}
+
+.date {
+  background: skyblue;
+  font-size: 1.3rem;
+}
+
+/* Sunday */
+.date.sunday {
+  background: skyblue;
+}
+
+/* Friday */
+.date.friday {
+  background: #fff2cc;
+}
+
+/* Saturday */
+.date.saturday {
+  background: #fff2cc;
+}
+
+.today {
+  background: orange !important;
+  color: white;
+  font-weight: bold;
+}
+
+  </style>
+</head>
+<body>
+
+<h3 id="monthYear"></h3>
+
+<div class="calendar" id="calendar">
+  <div class="day">S</div>
+  <div class="day">M</div>
+  <div class="day">T</div>
+  <div class="day">W</div>
+  <div class="day">T</div>
+  <div class="day">F</div>
+  <div class="day">S</div>
+</div>
+
+<script>
+const calendar = document.getElementById("calendar");
+const monthYear = document.getElementById("monthYear");
+
+const today = new Date();
+const year = today.getFullYear();
+const month = today.getMonth();
+
+const firstDay = new Date(year, month, 1).getDay();
+const lastDate = new Date(year, month + 1, 0).getDate();
+
+monthYear.textContent = today.toLocaleString("default", {
+  month: "long",
+  year: "numeric"
+});
+
+// Empty cells before first date
+for (let i = 0; i < firstDay; i++) {
+  calendar.appendChild(document.createElement("div"));
+}
+
+// Dates
+for (let date = 1; date <= lastDate; date++) {
+  const dateDiv = document.createElement("div");
+  dateDiv.classList.add("date");
+  dateDiv.textContent = date;
+
+  const dayIndex = new Date(year, month, date).getDay();
+
+  if (dayIndex === 0) dateDiv.classList.add("sunday");
+  if (dayIndex === 5) dateDiv.classList.add("friday");
+  if (dayIndex === 6) dateDiv.classList.add("saturday");
+
+  if (
+    date === today.getDate() &&
+    month === today.getMonth() &&
+    year === today.getFullYear()
+  ) {
+    dateDiv.classList.add("today");
+  }
+
+  calendar.appendChild(dateDiv);
+}
+
+</script>
+</body>
+</html>

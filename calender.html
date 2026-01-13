@@ -9,9 +9,12 @@
       display: grid;
       grid-template-columns: repeat(7, 1fr);
       /* grid-template-rows: repeat(5, 50px); */
-      grid-template-rows: 30px repeat(5, 50px);
+      /* grid-template-rows: 30px repeat(5, 50px); */
+      grid-template-rows: auto repeat(5, minmax(40px, 1fr));
       row-gap: 20px;
       column-gap: 10px;
+      max-width: 600px;
+      margin: auto;
     }
     .date, .day{
       background-color: skyblue;
@@ -22,10 +25,51 @@
       align-items: center;
       font-size: 1.5em;
     }
+    
+    h3 {
+      font-size: 2.25rem;
+      text-align: center;
+    }
+
     .day {
       background-color: lightgray;
       font-size: 1em;
     }
+
+    .today {
+      background-color: orange;
+      color: white;
+      font-weight: bold;
+      border: 2px solid darkorange;
+    }
+    /* Sunday */
+/* .date:nth-child(7n + 8) {
+  background-color: #ffd6d6;
+} */
+
+/* Friday */
+.date:nth-child(7n + 13) {
+  background-color: red;
+}
+/* Saturday */
+.date:nth-child(7n + 14) {
+  background-color: red;
+}
+
+    @media (max-width: 480px) {
+      .calendar {
+        row-gap: 10px;
+        column-gap: 5px;
+        padding: 10px;
+      }
+      .date {
+        font-size: clamp(1rem, 2.5vw, 1.5rem);
+      }
+      .day {
+        font-size: clamp(0.8rem, 2vw, 1rem);
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -55,7 +99,7 @@
      <div class="date">10</div>
      <div class="date">11</div>
      <div class="date">12</div>
-     <div class="date">13</div>
+     <div class="date today">13</div>
      <div class="date">14</div>
      <div class="date">15</div>
      <div class="date">16</div>
