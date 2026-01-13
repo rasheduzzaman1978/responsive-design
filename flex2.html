@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Flex Layout</title>
+
+  <style>
+    /* ---------- Global ---------- */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      background-color: #f4f4f4;
+    }
+
+    /* ---------- Header ---------- */
+    header h2 {
+      text-align: center;
+      background-color: #1c7e21;
+      color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      width: min(90%, 600px);
+      margin: 30px auto;
+    }
+
+    /* ---------- Main Container ---------- */
+    .container {
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .box {
+      background-color: #006d6f;
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      flex: 1;
+    }
+
+    .box h3 {
+      text-align: center;
+      font-size: 26px;
+      margin-bottom: 10px;
+      border: 1px solid purple;
+      border-radius: 8px;
+      padding: 5px;
+      width: fit-content;
+      margin-inline: auto;
+    }
+
+    /* ---------- Box Items ---------- */
+    .box-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 20px;
+      max-width: 1100px;
+      margin: auto;
+      justify-content: center;
+    }
+
+    .item {
+      flex: 1 1 250px;
+      max-width: 300px;
+      height: 100px;
+      background-color: #ff6b4a;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      font-size: 18px;
+      transition: transform 0.3s ease;
+    }
+
+    .item:hover {
+      transform: scale(1.05);
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .box h3 {
+        font-size: 20px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      header h2 {
+        font-size: 22px;
+        width: 95%;
+      }
+
+      .item {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h2>Let's Explore Flex</h2>
+  </header>
+
+  <main>
+    <section class="container">
+      <article class="box">
+        <h3>Box - 1</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
+          harum placeat obcaecati velit ab ad accusantium doloribus quia
+          repellat quisquam provident aliquid nulla quidem pariatur.
+        </p>
+      </article>
+
+      <article class="box">
+        <h3>Box - 2</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
+          eaque est optio ratione culpa excepturi alias! Facere enim soluta
+          cupiditate aut magnam.
+        </p>
+      </article>
+    </section>
+
+    <section class="box-container">
+      <div class="item">Box 1</div>
+      <div class="item">Box 2</div>
+      <div class="item">Box 3</div>
+      <div class="item">Box 4</div>
+      <div class="item">Box 5</div>
+      <div class="item">Box 6</div>
+      <div class="item">Box 7</div>
+      <div class="item">Box 8</div>
+      <div class="item">Box 9</div>
+      <div class="item">Box 10</div>
+      <div class="item">Box 11</div>
+      <div class="item">Box 12</div>
+      <div class="item">Box 13</div>
+      <div class="item">Box 14</div>
+      <div class="item">Box 15</div>
+      <div class="item">Box 16</div>
+      <div class="item">Box 17</div>
+      <div class="item">Box 18</div>
+      <div class="item">Box 19</div>
+      <div class="item">Box 20</div>
+    </section>
+  </main>
+
+</body>
+</html>
